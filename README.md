@@ -23,10 +23,11 @@ Auto-centers and tiles macOS apps — a blessing for neat freaks!
 ---
 
 > ### 🍴 This is a fork of [Lv-0/plumb](https://github.com/Lv-0/plumb)
-> **Headline change: tiling is now a real multi-window grid.** Where upstream maximizes one window at
-> a time to fill the screen, this fork's **Tile Now** (`⌥⌘T`) and auto-tile arrange **all** of an app's
-> windows into a grid across the screen (2×2, 3×2, …). It also adds a visual **Tile Layout** picker with
-> live hover-preview. See **[FORK_CHANGES.md](./FORK_CHANGES.md)** for the full list.
+> **Tiling is now a real multi-window grid.** 
+
+Where upstream maximizes one window at a time to fill the screen, this fork's **Tile Now** (`⌥⌘T`) and auto-tile arrange **all** of an app's windows into a grid across the screen (2×2, 3×2, …). It also adds a visual **Tile Layout** picker with live hover-preview. 
+
+See **[FORK_CHANGES.md](./FORK_CHANGES.md)** for the full list.
 >
 > Maintained by **Anarkissed** — _no gods, no masters, no vendor lock-in._
 > If it saved you some fiddling, [**☕ buy me a coffee**](https://buymeacoffee.com/anarkissed88).
