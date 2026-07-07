@@ -13,11 +13,19 @@ Auto-centers and tiles macOS apps — a blessing for neat freaks!
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](./LICENSE)
 [![Platform](https://img.shields.io/badge/platform-macOS%2026%2B-lightgrey.svg?style=flat-square)](#requirements)
 [![Swift](https://img.shields.io/badge/Swift-6.2-F05138.svg?style=flat-square)](https://swift.org)
-[![Release](https://img.shields.io/badge/release-v2.0.51-success.svg?style=flat-square)](#download--install)
+[![Release](https://img.shields.io/badge/release-v2.0.52-success.svg?style=flat-square)](#download--install)
 
 **English** · [简体中文](./README.zh.md) · [Español](./README.es.md) · [Français](./README.fr.md) · [日本語](./README.ja.md)
 
 </div>
+
+---
+
+> ### 🍴 This is a fork of [Lv-0/plumb](https://github.com/Lv-0/plumb)
+> **Headline change: tiling is now a real multi-window grid.** Where upstream maximizes one window at
+> a time to fill the screen, this fork's **Tile Now** (`⌥⌘T`) and auto-tile arrange **all** of an app's
+> windows into a grid across the screen (2×2, 3×2, …). It also adds a visual **Tile Layout** picker with
+> live hover-preview and per-app memory. See **[FORK_CHANGES.md](./FORK_CHANGES.md)** for the full list.
 
 ---
 
@@ -65,6 +73,24 @@ Named after the **plumb line** — the weight a carpenter drops to find true ver
 | 🪧 Non-intrusive menu-bar presence | Menu-bar icon only, does not occupy the Dock |
 
 ## 📐 Auto-Tiling
+
+### Grid tiling (this fork)
+
+This fork adds true multi-window **grid tiling** — instead of maximizing one window at a time, it lays
+out **all** of an app's windows in a grid across the screen.
+
+- **Tile Now** — `⌥⌘T`, or the menu item. Grids every window of the focused app across its screen
+  (2 windows → side-by-side, 4 → 2×2, 6 → 3×2, …).
+- **Auto-tile `<App>`'s new windows** — `⌥⌘G`, or the menu toggle. Keeps that app's windows gridded
+  automatically as you open and close them.
+- **Tile Layout** — a submenu showing every grid arrangement for the current window count as a mini
+  pictogram. **Hover** to preview it live on your real windows; **click** to keep it. Choices are
+  remembered **per app + per window count**.
+- Layout tracks the live window count on the **focused display's current Space** (windows on other
+  Spaces / displays, minimized, or full-screen windows are ignored). Closing a window in a half-screen
+  split re-tiles within that split; only an explicit **Tile Now** resets to full screen.
+
+### Margin-based tiling settings
 
 Open `Tiling Settings…` from the menu bar to enable/disable the feature and manage your workflow.
 

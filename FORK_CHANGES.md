@@ -1,7 +1,18 @@
 # Fork changes
 
-A fork of [Lv-0/plumb](https://github.com/Lv-0/plumb) focused on making grid tiling
-robust and adding a visual layout picker. Everything below is on top of upstream `v2.0.51`.
+A fork of [Lv-0/plumb](https://github.com/Lv-0/plumb). Everything below is on top of upstream `v2.0.51`.
+
+## Core change — real multi-window grid tiling
+
+Upstream "tiling" maximizes **one** window at a time to fill the screen minus a margin. This fork
+reworks tiling into a true **grid tiler**: **Tile Now** (`⌥⌘T` / menu) and auto-tile arrange **all of
+an app's windows** into a grid that fills the screen (or the chosen region) — e.g. 4 Finder windows
+become a 2×2, 6 become 3×2, and so on. Windows are placed side-by-side into cells rather than each
+being blown up to full screen.
+
+- **Tile Now** grids every window of the focused app across its screen.
+- **Auto-tile** (per-app toggle) keeps an app's windows gridded as you open/close them.
+- Layout adapts to the live window count on the focused display's current Space.
 
 ## New feature — visual "Tile Layout" picker
 - New **Tile Layout** submenu in the menu-bar menu. For the focused app's current window
