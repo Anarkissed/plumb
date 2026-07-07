@@ -211,8 +211,8 @@ final class GridTilingController {
         let axCount = currentEligibleWindows(pid: pid, appElement: appElement).count
         DiagnosticLog.debug("grid: layoutPickerContext bundle=\(bundleID) onScreen=\(wins.count) axTotal=\(axCount)")
         guard wins.count >= 2 else { return nil }
-        let chosen = store.load().chosenColumns(bundleID: bundleID, windowCount: wins.count)
-        return LayoutPickerContext(pid: pid, bundleID: bundleID, appElement: appElement, windowCount: wins.count, chosenColumns: chosen)
+        // 不记忆布局 → 无「当前选中」勾选（选择只应用当下）。
+        return LayoutPickerContext(pid: pid, bundleID: bundleID, appElement: appElement, windowCount: wins.count, chosenColumns: nil)
     }
 
     /// 子菜单打开时调用：抓取前台 app 可平铺窗口的原始 frame 快照（供关闭时还原），并**一次性**固定
@@ -235,13 +235,13 @@ final class GridTilingController {
         reflow(pid: ctx.pid, appElement: ctx.appElement, columnsOverride: columns, animated: false)
     }
 
-    /// 点选某布局：持久化到 (app, 窗口数)，保留铺开结果，不再还原。
+    /// 点选某布局：**只应用当下**（不持久化、不记忆），保留铺开结果，不再还原。之后的开/关窗自动重排
+    /// 回到自动列数——不会「记住」这次选择再冒出来干扰（用户偏好）。
     func commitLayoutColumns(_ columns: Int) {
         guard let ctx = previewContext else { return }
-        store.save(store.load().settingChosenColumns(columns, bundleID: ctx.bundleID, windowCount: ctx.windowCount))
         reflow(pid: ctx.pid, appElement: ctx.appElement, columnsOverride: columns, animated: false)
         previewCommitted = true
-        DiagnosticLog.debug("grid: layout committed bundle=\(ctx.bundleID) count=\(ctx.windowCount) columns=\(columns)")
+        DiagnosticLog.debug("grid: layout applied (not remembered) bundle=\(ctx.bundleID) count=\(ctx.windowCount) columns=\(columns)")
         previewContext = nil
         previewSnapshot = []
     }
@@ -400,8 +400,9 @@ final class GridTilingController {
         } else {
             region = lastTiledRegion[pid] ?? fullRegion
         }
-        let bundleID = NSRunningApplication(processIdentifier: pid)?.bundleIdentifier
-        let cols = columnsOverride ?? cfg.chosenColumns(bundleID: bundleID, windowCount: elements.count)
+        // 布局选择「只应用一次、不记忆」（用户偏好：记忆会在使用中造成意外）。自动重排一律走**自动列数**推断；
+        // `columnsOverride` 只在当下的实时预览 / 点选那一刻生效，不落盘、不影响之后的开/关窗重排。
+        let cols = columnsOverride
         let frames = WindowGeometry.gridFrames(region: region, count: elements.count, gutter: cfg.gutter, columns: cols)
         DiagnosticLog.debug("grid: reflow pid=\(pid) windows=\(elements.count) region=\(region) frames=\(frames.count) cols=\(cols.map(String.init) ?? "auto") reset=\(resetRegion)")
 

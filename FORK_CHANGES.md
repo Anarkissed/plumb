@@ -19,8 +19,9 @@ being blown up to full screen.
   count it lists every grid arrangement (e.g. 4 windows → `2×2`, `1×4`, `4×1`, …), each drawn
   as a live mini-grid pictogram rendered from the real layout engine.
 - **Hover to preview** — the real windows snap into that layout instantly; move away or close
-  the menu to revert. **Click to keep** — the choice is remembered **per app + per window count**
-  (a ✓ marks the saved layout), and future Tile Now / auto-tile reuse it.
+  the menu to revert. **Click to apply** — it lays out immediately. The choice is **not remembered**:
+  it's a "for now" arrangement, and later open/close auto-tiling returns to the automatic layout, so an
+  old pick never resurfaces to surprise you.
 
 ## Tiling correctness fixes
 - **Global hotkey dispatch** — `⌥⌘T` (Tile Now) never fired: each Carbon hotkey handler returned

@@ -14,6 +14,7 @@ Auto-centers and tiles macOS apps — a blessing for neat freaks!
 [![Platform](https://img.shields.io/badge/platform-macOS%2026%2B-lightgrey.svg?style=flat-square)](#requirements)
 [![Swift](https://img.shields.io/badge/Swift-6.2-F05138.svg?style=flat-square)](https://swift.org)
 [![Release](https://img.shields.io/badge/release-v2.0.52-success.svg?style=flat-square)](#download--install)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-anarkissed88-FFDD00?style=flat-square&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/anarkissed88)
 
 **English** · [简体中文](./README.zh.md) · [Español](./README.es.md) · [Français](./README.fr.md) · [日本語](./README.ja.md)
 
@@ -25,7 +26,15 @@ Auto-centers and tiles macOS apps — a blessing for neat freaks!
 > **Headline change: tiling is now a real multi-window grid.** Where upstream maximizes one window at
 > a time to fill the screen, this fork's **Tile Now** (`⌥⌘T`) and auto-tile arrange **all** of an app's
 > windows into a grid across the screen (2×2, 3×2, …). It also adds a visual **Tile Layout** picker with
-> live hover-preview and per-app memory. See **[FORK_CHANGES.md](./FORK_CHANGES.md)** for the full list.
+> live hover-preview. See **[FORK_CHANGES.md](./FORK_CHANGES.md)** for the full list.
+>
+> Maintained by **Anarkissed** — _no gods, no masters, no vendor lock-in._
+> If it saved you some fiddling, [**☕ buy me a coffee**](https://buymeacoffee.com/anarkissed88).
+
+<div align="center">
+<!-- Save your Anarkissed banner image to this path and it renders here -->
+<img src="assets/anarkissed-banner.png" alt="Anarkissed" width="640">
+</div>
 
 ---
 
